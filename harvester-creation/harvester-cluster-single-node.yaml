@@ -1,0 +1,40 @@
+scheme_version: 1
+system_settings:
+  default-vm-termination-grace-period-seconds: 300
+  log-level: "debug"
+  auto-disk-provision-paths: /dev/sd*
+  upgrade-checker-enabled: false
+install:
+  wipeDisks: true
+  skipchecks: true
+  debug: true
+  addons:
+    rancher_monitoring:
+      enabled: true
+  harvester:
+    storage_class:
+      replica_count: 1
+os:
+  sshd:
+    sftp: true
+  ssh_authorized_keys:
+    - github:irishgordo
+  modules:
+    - kvm
+    - nvme
+    - acpi
+    - rbd
+    - nbd
+  dns_nameservers:
+    - 1.1.1.1
+    - 8.8.8.8
+    - 8.8.4.4
+  ntp_servers:
+    - time1.google.com
+    - time2.google.com
+    - time3.google.com
+  after_install_chroot_commands:
+    - "rm -f /etc/resolv.conf && echo 'nameserver 8.8.8.8' | sudo tee /etc/resolv.conf"
+    - "mkdir /usr/local/bin"
+    - "curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 && chmod 700 get_helm.sh && ./get_helm.sh"
+    - "rm -f /etc/resolv.conf && ln -s /var/run/netconfig/resolv.conf /etc/resolv.conf"

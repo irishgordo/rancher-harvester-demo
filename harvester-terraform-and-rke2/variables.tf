@@ -34,7 +34,7 @@ variable "MINIOSERVER_VM_NETWORK_VLAN" {
   description = "the base network"
   type        = number
   sensitive   = false
-  default     = 1
+  default     = 2011
 }
 
 variable "MINIOSERVER_VM_NETWORK_VM_NET_NAME" {

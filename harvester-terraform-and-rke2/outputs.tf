@@ -22,12 +22,14 @@ output "general_info" {
 
         This is the rancher2_cluster_v2 Output Content :) !
 
-        Cluster ID: ${rancher2_cluster_v2.rke2-terraform.id}
-        Cluster Name: ${rancher2_cluster_v2.rke2-terraform.name}
-        Verson OF RKE2 Installed: ${var.rke2_k8s_version}
-        Each Node In The Cluster Username For SSH: ${var.rke2_vm_ssh_user}
-        Each Node In The Cluster Password For SSH: ${var.rke2_vm_password}
 
     EOF
   )
 }
+
+
+# Cluster ID: ${rancher2_cluster_v2.rke2-terraform.id}
+# Cluster Name: ${rancher2_cluster_v2.rke2-terraform.name}
+# Verson OF RKE2 Installed: ${var.rke2_k8s_version}
+# Each Node In The Cluster Username For SSH: ${var.rke2_vm_ssh_user}
+# Each Node In The Cluster Password For SSH: ${var.rke2_vm_password}
